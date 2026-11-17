@@ -1,0 +1,128 @@
+---
+import 'lenis/dist/lenis.css';
+import '../styles/global.css';
+import LenisScroll from '../components/LenisScroll.svelte';
+import Preloader from '../components/Preloader.svelte';
+
+interface Props {
+  title?: string;
+  enableLenis?: boolean;
+}
+
+const { title = "Shang Yun Shang Yun — Lunar New Year Gifts", enableLenis = true } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="ld" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <script is:inline>
+      (function() {
+        try {
+          var saved = localStorage.getItem('shangyun.theme.v1');
+          var theme = saved || 'dark';
+          document.documentElement.setAttribute('data-theme', theme);
+          document.documentElement.style.colorScheme = theme;
+        } catch (e) {}
+      })();
+    </script>
+    <noscript>
+      <style>
+        html.ld { overflow: auto !important; }
+        #loader { display: none !important; }
+      </style>
+    </noscript>
+
+    <!-- Critical Anti-FOUC & Instant Luxury Preloader Canvas Baseline -->
+    <style is:inline>
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      html.ld, html.ld body {
+        background-color: #0c0605 !important;
+        overflow: hidden !important;
+      }
+      #loader {
+        position: fixed !important;
+        inset: 0 !important;
+        z-index: 99999 !important;
+        background: transparent !important;
+        display: grid !important;
+        place-items: center !important;
+        overflow: hidden !important;
+        pointer-events: auto;
+      }
+      #loader.out {
+        background: transparent !important;
+        pointer-events: none !important;
+      }
+      #loader .lh {
+        position: absolute !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        width: 50.2% !important;
+        background: radial-gradient(120% 90% at 50% 40%, #1a0d0a, #0c0605 70%) !important;
+      }
+      #loader .lh.l { left: 0 !important; }
+      #loader .lh.r { right: 0 !important; }
+      #loader .lc {
+        position: relative !important;
+        z-index: 2 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+      #loader .lr {
+        position: relative !important;
+        width: 124px !important;
+        height: 124px !important;
+        display: grid !important;
+        place-items: center !important;
+      }
+      #loader .lr svg {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 124px !important;
+        height: 124px !important;
+        max-width: 124px !important;
+        max-height: 124px !important;
+      }
+      #loader .lr circle {
+        fill: none !important;
+        stroke: #b9985c !important;
+        stroke-width: 1 !important;
+      }
+    </style>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&family=Ma+Shan+Zheng&display=swap"
+    />
+  </head>
+  <body>
+    <!-- Luxury Preloader Animation (Page entrance & reload) -->
+    <Preloader client:load />
+
+    <!-- Hidden SVG filter for Chinese ink effect -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <filter id="ink" x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency=".011" numOctaves="4" seed="7" result="n" />
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="70" />
+        <feGaussianBlur stdDeviation="1.2" />
+      </filter>
+    </svg>
+
+    <!-- Lenis Smooth Scrolling Engine (Only for pages requiring smooth scrolling) -->
+    {enableLenis && <LenisScroll client:load />}
+
+    <div class="preview-note">PRIVATE DEMO · Browser-local data · No real orders or authentication</div>
+    <slot />
+    <div class="credit-note">Original project: <a href="https://github.com/mchann/shangyun-ekraf">mchann / Shang Yun</a>. English recreation and improvements by Axel. Private working preview, not a published fork.</div>
+    <style is:global>.preview-note{position:relative;z-index:90;background:#b9985c;color:#180c09;text-align:center;padding:9px 14px;font:11px/1.5 sans-serif;letter-spacing:.7px}.credit-note{position:relative;z-index:2;background:#130a08;color:#cbb89e;padding:24px;text-align:center;font:12px/1.8 sans-serif}.credit-note a{color:#e6cd9e}nav.top{top:34px!important}@media(max-width:600px){nav.top{top:51px!important;display:flex!important;flex-wrap:wrap!important;gap:6px 12px!important;padding:10px 14px!important;align-content:center;min-height:62px}.top .mark{margin-right:auto;flex:0 1 auto;white-space:nowrap}.top .brand-name{font-size:18px!important}.top .nav-link{font-size:12px!important;padding:4px!important;white-space:nowrap}.top .user-link{max-width:94px;overflow:hidden;text-overflow:ellipsis}.top .theme-toggle{flex-shrink:0}.preview-note{font-size:10px;min-height:51px;box-sizing:border-box;padding:9px 24px}}</style>
+  </body>
+</html>
