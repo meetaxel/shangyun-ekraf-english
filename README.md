@@ -2,7 +2,7 @@
 
 An English-language adaptation of [mchann/shangyun-ekraf](https://github.com/mchann/shangyun-ekraf).
 
-**Original project, visual design and artwork:** mchann.  
+**Original project, visual design and artwork:** Echa ([@mchann](https://github.com/mchann)).  
 **English recreation and improvements:** Axel ([@meetaxel](https://github.com/meetaxel)).
 
 This repository is an independent, history-free adaptation, **not a native GitHub fork**. Original authorship is not claimed. No license is added over the original work; do not assume this repository grants unrestricted reuse rights.
