@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="sealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b8292c" />
+      <stop offset="100%" stop-color="#8a1917" />
+    </linearGradient>
+    <filter id="sealShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+  
+  <!-- Outer Seal Body with Gold Border -->
+  <rect x="8" y="8" width="112" height="112" rx="12" fill="url(#sealGrad)" stroke="#b9985c" stroke-width="4" filter="url(#sealShadow)"/>
+  
+  <!-- Inner Delicate Gold Line -->
+  <rect x="18" y="18" width="92" height="92" rx="8" fill="none" stroke="#e0b562" stroke-width="2" stroke-opacity="0.6"/>
+  
+  <!-- Calligraphy Character 尚 (Shang) -->
+  <text 
+    x="64" 
+    y="85" 
+    text-anchor="middle" 
+    font-family="'Ma Shan Zheng', 'STKaiti', 'KaiTi', 'SimSun', serif" 
+    font-weight="bold" 
+    font-size="72" 
+    fill="#f6efe2"
+  >尚</text>
+</svg>
